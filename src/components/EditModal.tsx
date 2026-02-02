@@ -28,9 +28,13 @@ export default function EditModal({
   const handleChange = (field: keyof House, value: string | number) => {
     setFormData(prev => ({
       ...prev,
-      [field]: value
+      [field]: typeof value === "string" && 
+        ["precio", "recamaras", "banos", "cochera"].includes(field)
+        ? Number(value)
+        : value
     }));
   };
+
 
   const handleImages = async (files: FileList | null) => {
     if (!files) return;

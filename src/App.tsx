@@ -7,11 +7,13 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <BrowserRouter>
+      <Analytics/>    
       <NavBar/>
       <Routes>
         <Route path="/" element={<Index />} />
