@@ -4,6 +4,6 @@
   "background": "#FDFDFD",
   "text": "#1A1C1E",
   "textHover": "#ffffff",
-  "fontTitle": "var(--font-montserrat)",
-  "fontBody": "var(--font-opensans)"
+  "fontTitle": "var(--font-title)",
+  "fontBody": "var(--font-body)"
 }
