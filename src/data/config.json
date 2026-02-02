@@ -1,0 +1,9 @@
+{
+  "primary": "#0F4C81",
+  "secondary": "#A39274",
+  "background": "#FDFDFD",
+  "text": "#1A1C1E",
+  "textHover": "#ffffff",
+  "fontTitle": "var(--font-montserrat)",
+  "fontBody": "var(--font-opensans)"
+}

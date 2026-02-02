@@ -1,0 +1,9 @@
+{
+    "ciudad": "Ciudad de México",
+    "email": "nL2Bq@example.com",
+    "telefono": "55 1234 5678",
+    "whatsapp": "55 1234 5678",
+    "direccion": "Cirquito Saltamontes 318",
+    "mapsUrl": "https://maps.google.com/3p4W4EJb4o1Hd1wE6",
+    "redes": ["https://www.facebook.com/dsdsd", "https://www.instagram.com", "https://www.x.com"]
+}

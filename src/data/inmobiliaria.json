@@ -1,0 +1,9 @@
+{
+  "nombre": "Inmobiliaria Horizonte",
+  "direccion": "cirquito saltamontes 318",
+  "whatsapp": "5215512345678",
+  "mensaje": "Hola, me interesa esta propiedad",
+  "logo": "../public/img/logo.jpg",
+  "hero": "../public/img/casa.jpg",
+  "historyImg": "../public/img/historias.jpg"
+}
