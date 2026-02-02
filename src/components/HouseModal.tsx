@@ -1,7 +1,8 @@
 import { motion } from "motion/react"; 
 import theme from '../data/config.json'
-import { BadgeCheck, BadgeX, Bath, DoorClosed, Warehouse, X } from 'lucide-react';
+import { BadgeCheck, BadgeX, Bath, DoorClosed, MapPin, Warehouse, X } from 'lucide-react';
 import Carrucel from "./ui/Carrucel";
+import { getEmbedMap } from "../utils/getEmbedMap";
 
 interface HouseModalProps {
     titulo: string;
@@ -13,16 +14,18 @@ interface HouseModalProps {
     cochera: number;
     estatus: string;
     descripcion: string;
+    mapa?: string;
     onClose: () => void;
 
 }
-export default function HouseModal({titulo, precio, imagenes, descripcion, zona, recamaras, banos, cochera, estatus, onClose} : HouseModalProps) {
+export default function HouseModal({titulo, precio, imagenes, descripcion, zona, recamaras, banos, cochera, estatus, mapa = "" ,onClose} : HouseModalProps) {
+    const embed = getEmbedMap(mapa);
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
             <motion.section 
                 initial={{ opacity: 0, scale: 0.9 }} 
                 animate={{ opacity: 1, scale: 1 }}
-                className="rounded-3xl max-w-4xl w-full overflow-hidden relative shadow-2xl"
+                className="rounded-3xl w-full overflow-hidden relative shadow-2xl"
                 style={{
                     backgroundColor: theme.background,
                     fontFamily: theme.fontBody,
@@ -52,6 +55,23 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
                         <p className="flex gap-1 text-lg mt-2"><Warehouse/>: {cochera} {cochera > 1 ? "vehiculos" : "vehiculo"}</p>
                         <p className="flex items-center gap-1 text-lg mt-2"><span className='flex gap-1 font-bold'>Disponibilidad:</span>{estatus == "Disponible" ? <BadgeCheck/> : <BadgeX/>} <p className='text-xs'>{estatus}</p></p>
                         <p className="text-lg mt-2"><span className="font-bold">Descripcion:</span> {descripcion}</p>
+                        {embed ? (
+                            <iframe
+                                src={embed}
+                                className="w-full h-52 rounded-xl border"
+                                loading="lazy"
+                            />
+                            ) : mapa ? (
+                            <a
+                                href={mapa}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-1 mt-3 text-sm underline"
+                            >
+                                <MapPin size={16} /> Ver ubicación en Google Maps
+                            </a>
+                            ) : null}
+
                     </div>
                 </div>
             </motion.section>

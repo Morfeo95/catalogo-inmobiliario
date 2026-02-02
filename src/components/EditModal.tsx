@@ -105,6 +105,13 @@ export default function EditModal({
             value={formData.descripcion}
             onChange={v => handleChange("descripcion", v)}
           />
+          <Input
+            label="Link de Google Maps"
+            type="text"
+            value={formData.mapa || ""}
+            onChange={v => handleChange("mapa", v)}
+          />
+
         </div>
 
         <div className="mt-4">

@@ -10,6 +10,6 @@ export interface House {
     estatus: string;
     descripcion: string;
     imagenes: string[];
-    mapa: string;
+    mapa?: string;
     tipo: string;
 }
