@@ -9,7 +9,7 @@
     "cochera": 2,
     "estatus": "Disponible",
     "descripcion": "Casa amplia y bien ubicada con dos recamaras y dos baños.",
-    "imagenes": ["/img/casa-en-zona-centro/1.jpg", "../public/img/casa-en-zona-centro/2.jpeg"],
+    "imagenes": ["/img/casa-en-zona-centro/1.jpg", "/img/casa-en-zona-centro/2.jpeg"],
     "mapa": "https://www.google.com/maps/place/Panader%C3%ADa+Azteca/@21.936053,-102.2539175,21z/data=!4m6!3m5!1s0x8429f192f8c38671:0x650551c77c9f356!8m2!3d21.9361028!4d-102.2539184!16s%2Fg%2F11yph72nv5?entry=ttu&g_ep=EgoyMDI2MDEyMS4wIKXMDSoASAFQAw%3D%3D",
     "tipo": "venta"
   }
