@@ -29,7 +29,7 @@ export default function Input({ onChange, type = 'text', value = '', label } : I
         type={type}
         value={inputValue}
         onChange={handleChange}
-        className='w-full md:p-4 rounded-2xl'
+        className='w-full p-4 rounded-2xl'
         style={{
             backgroundColor: theme.secondary,
             color: theme.textHover,

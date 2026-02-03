@@ -26,7 +26,8 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
             <motion.section 
                 initial={{ opacity: 0, scale: 0.9 }} 
                 animate={{ opacity: 1, scale: 1 }}
-                className="rounded-3xl w-full overflow-hidden relative shadow-2xl"
+                className="rounded-3xl max-h-[90vh] w-full overflow-hidden 
+                relative shadow-2xl"
                 style={{
                     backgroundColor: theme.background,
                     fontFamily: theme.fontBody,
@@ -39,9 +40,11 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
                 >
                     <X/>
                 </button>
-                <div className="grid grid-cols-1 md:grid-cols-2 z-1 md:z-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 h-full">
                     <Carrucel imagenes={imagenes}/>
-                    <div className="p-8"
+                    <div className="p-8 
+                        overflow-y-auto 
+                        max-h-[90vh]"
                         style={{
                             backgroundColor: theme.secondary,
                             fontFamily: theme.fontBody,
