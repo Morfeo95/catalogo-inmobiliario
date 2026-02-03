@@ -15,10 +15,11 @@ interface HouseModalProps {
     estatus: string;
     descripcion: string;
     mapa?: string;
+    tipo: string;
     onClose: () => void;
 
 }
-export default function HouseModal({titulo, precio, imagenes, descripcion, zona, recamaras, banos, cochera, estatus, mapa = "" ,onClose} : HouseModalProps) {
+export default function HouseModal({titulo, precio, imagenes, descripcion, zona, recamaras, banos, cochera, estatus, mapa, tipo ,onClose} : HouseModalProps) {
     const embed = getEmbedMap(mapa);
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
@@ -48,8 +49,8 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
                         }}
                     >
                         <h1 className="text-lg md:text-3xl font-bold">{titulo}</h1>
-                        <p className="md:text-lg mt-2">Precio: {precio}</p>
-                        <p className="md:text-lg mt-2">Zona: {zona}</p>
+                        <p className="md:text-lg mt-2"><span className="font-bold">{tipo == "venta" ? "Precio" : "Renta"  }: </span>{precio}</p>
+                        <p className="md:text-lg mt-2"><span className="font-bold">Zona:</span> {zona}</p>
                         <p className="flex gap-1 md:text-lg mt-2"><DoorClosed/>: {recamaras} {recamaras > 1 ? "habitaciones" : "habitacion"} </p>
                         <p className="flex gap-1 md:text-lg mt-2"><Bath/>: {banos} {banos > 1 ? "baños" : "baño"}</p>
                         <p className="flex gap-1 md:text-lg mt-2"><Warehouse/>: {cochera} {cochera > 1 ? "vehiculos" : "vehiculo"}</p>

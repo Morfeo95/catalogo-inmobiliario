@@ -95,6 +95,16 @@ export default function EditModal({
             onChange={v => handleChange("cochera", v)} />
 
           <Select
+            label="Tipo de operación"
+            value={formData.tipo}
+            onChange={v => handleChange("tipo", v)}
+            options={[
+              { label: "Venta", value: "venta" },
+              { label: "Renta", value: "renta" }
+            ]}
+          />
+
+          <Select
             label="Estatus"
             value={formData.estatus}
             onChange={v => handleChange("estatus", v)}
