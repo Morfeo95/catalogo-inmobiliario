@@ -30,7 +30,8 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
                 style={{
                     backgroundColor: theme.background,
                     fontFamily: theme.fontBody,
-                    color: theme.textHover
+                    color: theme.textHover,
+                    WebkitOverflowScrolling: "touch"
                 }}
             >
                 <button 
@@ -39,9 +40,9 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
                 >
                     <X/>
                 </button>
-                <div className="grid grid-cols-1 md:grid-cols-2 z-1 md:z-0">
+                <div className="grid grid-cols-1 md:grid-cols-2 h-[90vh] min-h-0">
                     <Carrucel imagenes={imagenes}/>
-                    <div className="p-8"
+                    <div className="p-8 overflow-y-auto h-full min-h-0"
                         style={{
                             backgroundColor: theme.secondary,
                             fontFamily: theme.fontBody,
