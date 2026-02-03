@@ -66,7 +66,8 @@ export default function EditModal({
     <section className="fixed inset-0 z-50 flex 
     items-center justify-center bg-white/50 backdrop-blur-sm"
     >
-      <div className="relative w-full max-w-3xl rounded-3xl p-6 shadow-xl"
+      <div className="relative w-full max-w-3xl rounded-3xl shadow-xl
+             max-h-[90vh] flex flex-col"
         style={{
           backgroundColor: theme.background,
           fontFamily: theme.fontBody,
@@ -74,101 +75,102 @@ export default function EditModal({
         }}
       >
 
+        <div className="overflow-y-auto p-6 flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Input label="Titulo" type="text" value={formData.titulo}
+              onChange={v => handleChange("titulo", v)} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Input label="Titulo" type="text" value={formData.titulo}
-            onChange={v => handleChange("titulo", v)} />
+            <Input label="Precio" type="number" value={formData.precio.toString()}
+              onChange={v => handleChange("precio", v)} />
 
-          <Input label="Precio" type="number" value={formData.precio.toString()}
-            onChange={v => handleChange("precio", v)} />
+            <Input label="Zona" type="text" value={formData.zona}
+              onChange={v => handleChange("zona", v)} />
 
-          <Input label="Zona" type="text" value={formData.zona}
-            onChange={v => handleChange("zona", v)} />
+            <Input label="Recámaras" type="number" value={formData.recamaras.toString()}
+              onChange={v => handleChange("recamaras", v)} />
 
-          <Input label="Recámaras" type="number" value={formData.recamaras.toString()}
-            onChange={v => handleChange("recamaras", v)} />
+            <Input label="Baños" type="number" value={formData.banos.toString()}
+              onChange={v => handleChange("banos", v)} />
 
-          <Input label="Baños" type="number" value={formData.banos.toString()}
-            onChange={v => handleChange("banos", v)} />
+            <Input label="Cochera" type="number" value={formData.cochera.toString()}
+              onChange={v => handleChange("cochera", v)} />
 
-          <Input label="Cochera" type="number" value={formData.cochera.toString()}
-            onChange={v => handleChange("cochera", v)} />
+            <Select
+              label="Tipo de operación"
+              value={formData.tipo}
+              onChange={v => handleChange("tipo", v)}
+              options={[
+                { label: "Venta", value: "venta" },
+                { label: "Renta", value: "renta" }
+              ]}
+            />
 
-          <Select
-            label="Tipo de operación"
-            value={formData.tipo}
-            onChange={v => handleChange("tipo", v)}
-            options={[
-              { label: "Venta", value: "venta" },
-              { label: "Renta", value: "renta" }
-            ]}
-          />
+            <Select
+              label="Estatus"
+              value={formData.estatus}
+              onChange={v => handleChange("estatus", v)}
+              options={[
+                { label: "Disponible", value: "Disponible" },
+                { label: "No disponible", value: "No disponible" }
+              ]}
+            />
 
-          <Select
-            label="Estatus"
-            value={formData.estatus}
-            onChange={v => handleChange("estatus", v)}
-            options={[
-              { label: "Disponible", value: "Disponible" },
-              { label: "No disponible", value: "No disponible" }
-            ]}
-          />
+            <Input
+              label="Descripción"
+              type="text"
+              value={formData.descripcion}
+              onChange={v => handleChange("descripcion", v)}
+            />
+            <Input
+              label="Link de Google Maps"
+              type="text"
+              value={formData.mapa || ""}
+              onChange={v => handleChange("mapa", v)}
+            />
 
-          <Input
-            label="Descripción"
-            type="text"
-            value={formData.descripcion}
-            onChange={v => handleChange("descripcion", v)}
-          />
-          <Input
-            label="Link de Google Maps"
-            type="text"
-            value={formData.mapa || ""}
-            onChange={v => handleChange("mapa", v)}
-          />
+          </div>
 
-        </div>
-
-        <div className="mt-4">
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            disabled={uploading}
-            onChange={e => handleImages(e.target.files)}
-          />
-          {uploading && (
-            <p className="text-sm mt-2 opacity-70">
-              Subiendo imágenes…
-            </p>
-          )}
-        </div>
-
-        <div className="mt-6 flex justify-between items-center">
-          <Button onClick={onClose}>
-            Cancelar
-          </Button>
-
-          <div className="flex gap-3">
-            {house && house.id !== emptyHouse.id && onDelete && (
-              <Button
-                onClick={() => {
-                  if (confirm("¿Seguro que deseas eliminar esta propiedad?")) {
-                    onDelete(house.id);
-                    onClose();
-                  }
-                }}
-              >
-                Eliminar
-              </Button>
-            )}
-
-            <Button
-              onClick={() => onSave(formData)}
+          <div className="mt-4">
+            <input
+              type="file"
+              multiple
+              accept="image/*"
               disabled={uploading}
-            >
-              {house ? "Guardar cambios" : "Crear registro"}
+              onChange={e => handleImages(e.target.files)}
+            />
+            {uploading && (
+              <p className="text-sm mt-2 opacity-70">
+                Subiendo imágenes…
+              </p>
+            )}
+          </div>
+
+          <div className="mt-6 flex justify-between items-center">
+            <Button onClick={onClose}>
+              Cancelar
             </Button>
+
+            <div className="flex gap-3">
+              {house && house.id !== emptyHouse.id && onDelete && (
+                <Button
+                  onClick={() => {
+                    if (confirm("¿Seguro que deseas eliminar esta propiedad?")) {
+                      onDelete(house.id);
+                      onClose();
+                    }
+                  }}
+                >
+                  Eliminar
+                </Button>
+              )}
+
+              <Button
+                onClick={() => onSave(formData)}
+                disabled={uploading}
+              >
+                {house ? "Guardar cambios" : "Crear registro"}
+              </Button>
+            </div>
           </div>
         </div>
       </div>

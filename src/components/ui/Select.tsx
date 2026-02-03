@@ -19,7 +19,7 @@ export default function Select({ onChange, value, label, options }: SelectProps)
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className='w-full md:p-4 rounded-2xl appearance-none cursor-pointer'
+        className='w-full p-4 rounded-2xl appearance-none cursor-pointer'
         style={{
           backgroundColor: theme.secondary,
           color: theme.textHover,
