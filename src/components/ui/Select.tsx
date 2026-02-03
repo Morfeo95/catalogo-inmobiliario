@@ -11,7 +11,7 @@ export default function Select({ onChange, value, label, options }: SelectProps)
   return (
     <div className='flex flex-col gap-2 justify-center'>
       <label 
-        className='text-2xl font-bold' 
+        className='md:text-2xl font-bold' 
         style={{ color: theme.text, fontFamily: theme.fontTitle }}
       >
         {label}
@@ -19,7 +19,7 @@ export default function Select({ onChange, value, label, options }: SelectProps)
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className='w-full p-4 rounded-2xl appearance-none cursor-pointer'
+        className='w-full md:p-4 rounded-2xl appearance-none cursor-pointer'
         style={{
           backgroundColor: theme.secondary,
           color: theme.textHover,

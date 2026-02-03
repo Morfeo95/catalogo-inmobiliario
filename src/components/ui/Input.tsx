@@ -19,7 +19,7 @@ export default function Input({ onChange, type = 'text', value = '', label } : I
   return (
     <div className='flex flex-col gap-2 justify-center'>
       <label
-      className='text-2xl font-bold'
+      className='md:text-2xl font-bold'
       style={{
         color: theme.text,
         fontFamily: theme.fontTitle
@@ -29,7 +29,7 @@ export default function Input({ onChange, type = 'text', value = '', label } : I
         type={type}
         value={inputValue}
         onChange={handleChange}
-        className='w-full p-4 rounded-2xl'
+        className='w-full md:p-4 rounded-2xl'
         style={{
             backgroundColor: theme.secondary,
             color: theme.textHover,

@@ -34,11 +34,11 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
             >
                 <button 
                     onClick={onClose} 
-                    className="absolute top-4 right-4 rounded-full p-2"
+                    className="absolute top-4 right-4 rounded-full p-2 z-10 md:z-0"
                 >
                     <X/>
                 </button>
-                <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 z-1 md:z-0">
                     <Carrucel imagenes={imagenes}/>
                     <div className="p-8"
                         style={{
@@ -47,18 +47,18 @@ export default function HouseModal({titulo, precio, imagenes, descripcion, zona,
                             color: theme.textHover
                         }}
                     >
-                        <h1 className="text-3xl font-bold">{titulo}</h1>
-                        <p className="text-lg mt-2">Precio: {precio}</p>
-                        <p className="text-lg mt-2">Zona: {zona}</p>
-                        <p className="flex gap-1 text-lg mt-2"><DoorClosed/>: {recamaras} {recamaras > 1 ? "habitaciones" : "habitacion"} </p>
-                        <p className="flex gap-1 text-lg mt-2"><Bath/>: {banos} {banos > 1 ? "baños" : "baño"}</p>
-                        <p className="flex gap-1 text-lg mt-2"><Warehouse/>: {cochera} {cochera > 1 ? "vehiculos" : "vehiculo"}</p>
-                        <p className="flex items-center gap-1 text-lg mt-2"><span className='flex gap-1 font-bold'>Disponibilidad:</span>{estatus == "Disponible" ? <BadgeCheck/> : <BadgeX/>} <p className='text-xs'>{estatus}</p></p>
-                        <p className="text-lg mt-2"><span className="font-bold">Descripcion:</span> {descripcion}</p>
+                        <h1 className="text-lg md:text-3xl font-bold">{titulo}</h1>
+                        <p className="md:text-lg mt-2">Precio: {precio}</p>
+                        <p className="md:text-lg mt-2">Zona: {zona}</p>
+                        <p className="flex gap-1 md:text-lg mt-2"><DoorClosed/>: {recamaras} {recamaras > 1 ? "habitaciones" : "habitacion"} </p>
+                        <p className="flex gap-1 md:text-lg mt-2"><Bath/>: {banos} {banos > 1 ? "baños" : "baño"}</p>
+                        <p className="flex gap-1 md:text-lg mt-2"><Warehouse/>: {cochera} {cochera > 1 ? "vehiculos" : "vehiculo"}</p>
+                        <p className="flex items-center gap-1 md:text-lg mt-2"><span className='flex gap-1 font-bold'>Disponibilidad:</span>{estatus == "Disponible" ? <BadgeCheck/> : <BadgeX/>} <p className='text-xs'>{estatus}</p></p>
+                        <p className="md:text-lg mt-2"><span className="font-bold">Descripcion:</span> {descripcion}</p>
                         {embed ? (
                             <iframe
                                 src={embed}
-                                className="w-full h-52 rounded-xl border"
+                                className="w-full h-22 md:h-52 rounded-xl border"
                                 loading="lazy"
                             />
                             ) : mapa ? (

@@ -11,8 +11,11 @@ export default function Histories() {
             <div className='flex  flex-col w-11/12 items-center'>
                 
                 <div className='flex gap-6 items-stretch w-full'>
-                    <div className='relative rounded-2xl md:w-2xl h-auto shrink-0 overflow-hidden'>
-                        <img src={dataInm.historyImg} className='md:block hidden absolute inset-0 md:w-full md:h-full object-cover' />
+                    <div className='relative rounded-2xl 
+                    lg:w-2xl h-auto shrink-0 overflow-hidden'>
+                        <img src={dataInm.historyImg} 
+                        className='lg:block hidden absolute inset-0
+                         lg:w-full lg:h-full object-cover' />
                     </div>
                     <div className='flex flex-wrap gap-6 flex-1'>
                     {historiesArray.map(histories => (
