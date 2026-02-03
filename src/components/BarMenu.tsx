@@ -6,7 +6,7 @@ interface BarMenuProps {
 }
 export default function BarMenu({setMenuToShow} : BarMenuProps) {
     return (
-        <article className="flex flex-col items-center w-fit h-screen rounded-2xl overflow-hidden"
+        <article className="flex flex-col items-center w-3/8 h-screen rounded-2xl overflow-hidden"
             style={{
                 backgroundColor: theme.secondary,
                 color: theme.textHover,

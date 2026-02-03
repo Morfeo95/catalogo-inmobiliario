@@ -6,6 +6,7 @@ import Select from "./ui/Select";
 import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import { emptyHouse } from "../types/EmptyHouse";
 import theme from "../data/config.json";
+import { createEmptyHouse } from "../types/CreateEmptyHouse";
 
 interface EditModalProps {
   house?: House;
@@ -21,7 +22,7 @@ export default function EditModal({
   onClose
 }: EditModalProps) {
   const [formData, setFormData] = useState<House>(
-    house ? { ...house } : { ...emptyHouse }
+    house ? { ...house } : createEmptyHouse()
   );
   const [uploading, setUploading] = useState(false);
 

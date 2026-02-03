@@ -3,11 +3,11 @@ import Houses from "./Houses";
 import EditModal from "./EditModal";
 import data from "../data/houses.json";
 import type { House } from "../types/House";
-import { emptyHouse } from "../types/EmptyHouse";
 import theme from "../data/config.json";
 import { Plus } from "lucide-react";
 import { getInitialHouses } from "../utils/getInitialHouses";
 import Button from "./ui/Button";
+import { createEmptyHouse } from "../types/CreateEmptyHouse";
 
 export default function EditHouses({ isLoggedIn = false }) {
   const [houses, setHouses] = useState<House[]>([]);
@@ -23,17 +23,23 @@ export default function EditHouses({ isLoggedIn = false }) {
   
 
   const saveHouse = (house: House) => {
-  setHouses(prev => {
-    const exists = prev.some(h => h.id === house.id);
-    const updated = exists
-      ? prev.map(h => (h.id === house.id ? house : h))
-      : [...prev, house];
+    setHouses(prev => {
+      const index = prev.findIndex(h => h.id === house.id);
 
-    localStorage.setItem("houses", JSON.stringify(updated));
-    setEditingHouse(null);
-    return updated;
-      });
-    };
+      let updated: House[];
+
+      if (index >= 0) {
+        updated = prev.map(h => (h.id === house.id ? house : h));
+      } else {
+        updated = [...prev, house];
+      }
+
+      localStorage.setItem("houses", JSON.stringify(updated));
+      setEditingHouse(null);
+      return updated;
+    });
+  };
+
 
   const deleteHouse = (id: number) => {
     setHouses(prev => {
@@ -69,7 +75,7 @@ export default function EditHouses({ isLoggedIn = false }) {
         />
 
         <button
-          onClick={() => setEditingHouse(emptyHouse)}
+          onClick={() => setEditingHouse(createEmptyHouse())}
           className="p-4 rounded-full hover:scale-110 active:scale-95 transition"
           style={{
             backgroundColor: theme.primary,
@@ -85,7 +91,7 @@ export default function EditHouses({ isLoggedIn = false }) {
           house={editingHouse}
           onSave={saveHouse}
           onDelete={deleteHouse}
-          onClose={() => setEditingHouse(null)}
+          onClose={() => setEditingHouse(createEmptyHouse())}
         />
       )}
       <div className="flex justify-center mt-10">

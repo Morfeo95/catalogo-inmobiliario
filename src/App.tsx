@@ -8,9 +8,11 @@ import Dashboard from './pages/Dashboard';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import { Analytics } from "@vercel/analytics/react"
+import { BUILD_ID } from './utils/build';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log("Build:", BUILD_ID);
   return (
     <BrowserRouter>
       <Analytics/>    

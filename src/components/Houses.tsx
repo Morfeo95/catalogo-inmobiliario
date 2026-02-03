@@ -15,7 +15,7 @@ export default function Houses({ houses, isLoggedIn, onEdit = () => {} }: Houses
   return (
     <>
       <section id="propiedades" className="w-full mt-15">
-        <div className="flex gap-3 w-11/12 mx-auto">
+        <div className="flex flex-wrap gap-3 w-11/12 mx-auto">
           {houses.map(house => (
             <HouseCard
               key={house.id}
