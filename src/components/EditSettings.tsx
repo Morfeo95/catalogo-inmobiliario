@@ -39,7 +39,6 @@ export default function EditSettings({ isLoggedIn }: EditSettingsProps) {
 
   return (
     <article>
-      {/* Hero is now purely presentational; pass handlers */}
       <Hero
         settings={settings}
         isLoggedIn={isLoggedIn}
@@ -47,7 +46,6 @@ export default function EditSettings({ isLoggedIn }: EditSettingsProps) {
         onDownload={downloadJSON}
       />
 
-      {/* Modal controlled from here */}
       {editing && (
         <EditSettingsModal
           settings={settings}

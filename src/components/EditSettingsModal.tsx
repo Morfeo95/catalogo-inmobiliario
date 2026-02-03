@@ -3,7 +3,6 @@ import type { Inmobiliaria } from "../types/Inmobiliaria";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
 import theme from "../data/config.json";
-import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 
 interface Props {
   settings: Inmobiliaria;
@@ -17,23 +16,11 @@ export default function EditSettingsModal({
   onClose
 }: Props) {
   const [formData, setFormData] = useState<Inmobiliaria>({ ...settings });
-  const [uploading, setUploading] = useState(false);
 
   const handleChange = (field: keyof Inmobiliaria, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleImage = async (
-    field: keyof Inmobiliaria,
-    file: File | null
-  ) => {
-    if (!file) return;
-
-    setUploading(true);
-    const url = await uploadToCloudinary(file, "settings");
-    setFormData(prev => ({ ...prev, [field]: url }));
-    setUploading(false);
-  };
 
   return (
     <section className="fixed inset-0 z-50 flex items-center justify-center bg-white/50 backdrop-blur-sm">
@@ -59,16 +46,6 @@ export default function EditSettingsModal({
         <Input label="Mensaje" value={formData.mensaje}
           onChange={v => handleChange("mensaje", v)} />
 
-        <input type="file" onChange={e =>
-          handleImage("logo", e.target.files?.[0] || null)} />
-
-        <input type="file" onChange={e =>
-          handleImage("hero", e.target.files?.[0] || null)} />
-
-        <input type="file" onChange={e =>
-          handleImage("historyImg", e.target.files?.[0] || null)} />
-
-        {uploading && <p>Subiendo imágenes…</p>}
 
         <div className="flex justify-between mt-6">
           <Button onClick={onClose}>Cancelar</Button>
