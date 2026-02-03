@@ -6,6 +6,7 @@ import type { History } from "../types/History";
 import { emptyHistory } from "../types/EmptyHistory";
 import theme from "../data/config.json";
 import { Plus } from "lucide-react";
+import Button from "./ui/Button";
 
 interface EditHistoriesProps {
   isLoggedIn: boolean;
@@ -55,7 +56,7 @@ export default function EditHistories({ isLoggedIn }: EditHistoriesProps) {
 
   return (
     <article>
-      <div className="flex justify-center items-center gap-10 flex-wrap">
+      <div className="flex justify-center items-center gap-10 mt-15 flex-wrap">
         {histories.map(h => (
           <HistoryCard
             key={h.id}
@@ -77,16 +78,11 @@ export default function EditHistories({ isLoggedIn }: EditHistoriesProps) {
       </div>
 
       <div className="flex justify-center mt-10">
-        <button
+        <Button
           onClick={downloadJSON}
-          className="px-6 py-3 rounded-xl font-semibold"
-          style={{
-            backgroundColor: theme.secondary,
-            color: theme.textHover
-          }}
         >
           Descargar JSON
-        </button>
+        </Button>
       </div>
 
       {editingHistory && (

@@ -22,10 +22,10 @@ export default function Hero({ settings, isLoggedIn = false, onEdit, onDownload 
           fontFamily: theme.fontTitle
         }}
       >
-        <h1 className="text-5xl">{settings.nombre}</h1>
-        <h2 className="text-3xl">{settings.mensaje}</h2>
-        <h3 className="text-2xl">{settings.whatsapp}</h3>
-        <h4 className="text-lg">{settings.direccion}</h4>
+        <h1 className="md:text-5xl text-2xl">{settings.nombre}</h1>
+        <h2 className="md:text-3xl">{settings.mensaje}</h2>
+        <h3 className="md:text-2xl">{settings.whatsapp}</h3>
+        <h4 className="md:text-lg">{settings.direccion}</h4>
 
         {isLoggedIn && (
           <div className="flex gap-3 mt-4">

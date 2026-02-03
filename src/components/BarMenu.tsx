@@ -6,15 +6,18 @@ interface BarMenuProps {
 }
 export default function BarMenu({setMenuToShow} : BarMenuProps) {
     return (
-        <article className="flex flex-col items-center w-3/8 h-screen rounded-2xl overflow-hidden"
+        <article className="flex flex-col items-center lg:w-1/6 
+        lg:h-screen rounded-2xl overflow-hidden"
             style={{
                 backgroundColor: theme.secondary,
                 color: theme.textHover,
                 fontFamily: theme.fontBody
             }}
         >
-            <ul>
-                <motion.li className='text-2xl p-6 border-b'
+            <ul className='flex flex-wrap md:w-full lg:flex-col justify-center 
+            items-center'>
+                <motion.li className='lg:text-2xl md:w-full text-md 
+                p-6 lg:border-b'
                     style={{
                         borderColor: theme.textHover
                     }}
@@ -23,7 +26,8 @@ export default function BarMenu({setMenuToShow} : BarMenuProps) {
                     }}
                     onClick={() => setMenuToShow('propiedades')}
                 >Editar Propiedades</motion.li>
-                <motion.li className='text-2xl p-6 border-b'
+                <motion.li className='lg:text-2xl md:w-full text-md p-6
+                 lg:border-b'
                     style={{
                         borderColor: theme.textHover
                     }}
@@ -32,7 +36,8 @@ export default function BarMenu({setMenuToShow} : BarMenuProps) {
                     }}
                     onClick={() => setMenuToShow('historias')}
                     >Editar Historias</motion.li>
-                <motion.li className='text-2xl p-6 border-b'
+                <motion.li className='lg:text-2xl md:w-full text-md p-6
+                 lg:border-b'
                     style={{
                         borderColor: theme.textHover
                     }}

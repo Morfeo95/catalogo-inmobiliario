@@ -11,7 +11,7 @@ export default function Dashboard({isLoggedIn = false}: DashboardProps) {
     const [menuToShow, setMenuToShow] = useState('');
     return (
         <section>
-            <div className="flex w-11/12 mx-auto">
+            <div className="flex flex-col md:flex-row w-11/12 mx-auto">
                 <BarMenu setMenuToShow={setMenuToShow}/>
                 {menuToShow === 'propiedades' && 
                     <EditHouses isLoggedIn={isLoggedIn}/>

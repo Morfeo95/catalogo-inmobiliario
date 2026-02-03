@@ -67,7 +67,7 @@ export default function EditHouses({ isLoggedIn = false }) {
 
   return (
     <article>
-      <div className="flex justify-center items-center gap-15">
+      <div className="flex md:flex-row flex-col justify-center items-center gap-15">
         <Houses
           houses={houses}
           isLoggedIn={isLoggedIn}
@@ -91,7 +91,7 @@ export default function EditHouses({ isLoggedIn = false }) {
           house={editingHouse}
           onSave={saveHouse}
           onDelete={deleteHouse}
-          onClose={() => setEditingHouse(createEmptyHouse())}
+          onClose={() => setEditingHouse(null)}
         />
       )}
       <div className="flex justify-center mt-10">
