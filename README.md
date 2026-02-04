@@ -1,73 +1,114 @@
-# React + TypeScript + Vite
+📘 Catálogo Inmobiliario
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para la gestión y visualización de propiedades inmobiliarias, pensada para inmobiliarias o asesores independientes que necesitan un catálogo claro, editable y visualmente atractivo.
 
-Currently, two official plugins are available:
+El proyecto permite crear, editar, eliminar y mostrar propiedades, incluyendo carga de imágenes, filtros básicos y una interfaz moderna y responsiva.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características principales
 
-## React Compiler
+- 📋 Listado de propiedades
+  - Visualización en formato de tarjetas
+  - Información clave: precio, zona, tipo de operación, recámaras, baños, etc.
+- ✏️ Gestión de propiedades (CRUD)
+  - Crear nuevas propiedades
+  - Editar propiedades existentes
+  - Eliminar propiedades con confirmación
+- 🖼️ Carga de imágenes
+  - Subida múltiple de imágenes
+  - Almacenamiento en Cloudinary
+  - Organización automática por carpeta según el título de la propiedad
+- 🧭 Modal de edición
+  - Edición completa sin salir de la vista principal
+  - Diseño limpio y enfocado en UX
+- 🔔 Feedback al usuario
+  - Uso de toasts para notificaciones (éxito, error, advertencia)
+  - Reemplazo de alert y confirm tradicionales
+- 🎨 Diseño moderno y responsivo
+  - Construido con React + Vite
+  - Estilos con Tailwind CSS
+  - Configuración visual centralizada en config.json
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- Frontend
+  - React
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+- Servicios
+  - Cloudinary (gestión de imágenes)
+- Otros
+  - JSON como fuente de datos
+  - Arquitectura de componentes reutilizables
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📂 Estructura general del proyecto
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── ui/
+│   ├── EditModal.tsx
+│   ├── HouseModal.tsx
+│   └── ...
+├── data/
+│   └── config.json
+├── types/
+│   ├── House.ts
+│   ├── EmptyHouse.ts
+│   └── CreateEmptyHouse.ts
+├── utils/
+│   └── uploadToCloudinary.ts
+└── pages/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚙️ Instalación y uso
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clona el repositorio:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```shell
+   git clone [https://github.com/tu-usuario/catalogo-inmobiliario.git](https://github.com/tu-usuario/catalogo-inmobiliario.git)
+
+   ```
+
+2. Instala dependencias:
+
+  ```
+  npm install
+  
+  ```
+3. Ejecuta el proyecto en desarrollo:
+ 
+  ```
+  npm run dev
+
+  ```
+
+ 4. Abre en el navegador:
+
+  ```
+  http://localhost:5173
+
+  ```
+  ## 🔐 Variables de entorno
+
+Para la carga de imágenes en Cloudinary, necesitas configurar:
+
+- `VITE_CLOUDINARY_CLOUD_NAME`: tu_cloud_name
+- `VITE_CLOUDINARY_UPLOAD_PRESET`: tu_upload_preset
+
+## 📌 Estado del proyecto
+
+✔️ Funcional
+✔️ Modular
+✔️ Escalable
+
+El proyecto está listo para:
+
+- Integrarse con un backend
+- Convertirse en un SaaS inmobiliario
+- Añadir autenticación y roles de usuario
+- Persistencia con base de datos
+
+## 📄 Licencia
+
+Este proyecto es de uso libre para fines educativos o comerciales. Puedes adaptarlo según tus necesidades.
