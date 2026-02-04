@@ -72,23 +72,24 @@ src/
 
 2. Instala dependencias:
 
-  ```
-  npm install
+   ```shell
+   npm install
   
-  ```
+   ```
 3. Ejecuta el proyecto en desarrollo:
  
-  ```
-  npm run dev
+   ```shell
+   npm run dev
 
-  ```
+   ```
 
  4. Abre en el navegador:
 
-  ```
-  http://localhost:5173
+     ```shell
+     http://localhost:5173
 
-  ```
+     ```
+
   ## 🔐 Variables de entorno
 
 Para la carga de imágenes en Cloudinary, necesitas configurar:
