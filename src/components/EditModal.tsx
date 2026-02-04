@@ -7,6 +7,7 @@ import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 import { emptyHouse } from "../types/EmptyHouse";
 import theme from "../data/config.json";
 import { createEmptyHouse } from "../types/CreateEmptyHouse";
+import toast from "react-hot-toast";
 
 interface EditModalProps {
   house?: House;
@@ -154,10 +155,31 @@ export default function EditModal({
               {house && house.id !== emptyHouse.id && onDelete && (
                 <Button
                   onClick={() => {
-                    if (confirm("¿Seguro que deseas eliminar esta propiedad?")) {
-                      onDelete(house.id);
-                      onClose();
-                    }
+                    toast(
+                      t => (
+                        <div className="flex flex-col gap-2">
+                          <p>¿Eliminar esta propiedad?</p>
+                          <div className="flex gap-2 justify-end">
+                            <Button
+                              onClick={() => toast.dismiss(t.id)}
+                            >
+                              Cancelar
+                            </Button>
+                            <Button
+                              onClick={() => {
+                                onDelete?.(house.id);
+                                toast.dismiss(t.id);
+                                toast.success("Propiedad eliminada");
+                                onClose();
+                              }}
+                            >
+                              Eliminar
+                            </Button>
+                          </div>
+                        </div>
+                      ),
+                      { duration: 6000 }
+                    );
                   }}
                 >
                   Eliminar
@@ -165,7 +187,13 @@ export default function EditModal({
               )}
 
               <Button
-                onClick={() => onSave(formData)}
+                onClick={() => {
+                  onSave(formData);
+                  toast.success(
+                    house ? "Propiedad actualizada" : "Propiedad creada"
+                  );
+                  onClose();
+                }}
                 disabled={uploading}
               >
                 {house ? "Guardar cambios" : "Crear registro"}

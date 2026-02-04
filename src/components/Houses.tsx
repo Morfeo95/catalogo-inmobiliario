@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useMatch, useNavigate, useLocation } from "react-router-dom";
 import type { House } from "../types/House";
 import HouseCard from "./ui/HouseCard";
 import HouseModal from "./HouseModal";
@@ -26,10 +27,41 @@ export default function Houses({
   const [selectedHouse, setSelectedHouse] = useState<House | null>(null);
   const [filter, setFilter] = useState<"all" | "venta" | "renta">("all");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const match = useMatch("/property/:id");
+
   const normalized = useMemo(
     () => houses.map(h => ({ ...h, tipo: normalizeTipo(h.tipo) })),
     [houses]
   );
+
+  const openHouse = (h: House) => {
+    setSelectedHouse(h);
+    navigate(`/property/${h.id}`, { replace: false });
+  };
+
+  const closeHouse = () => {
+    setSelectedHouse(null);
+    if (location.pathname.startsWith("/property/")) {
+      navigate("/", { replace: true });
+    }
+  };
+
+  useEffect(() => {
+    if (!match) return;
+
+    const id = Number(match.params.id);
+    if (!Number.isFinite(id)) return;
+
+    const found = normalized.find(h => h.id === id);
+    if (found) {
+      setSelectedHouse(found);
+      return;
+    }
+
+    navigate("/", { replace: true });
+  }, [match, normalized, navigate]);
 
   const housesVenta = useMemo(
     () => normalized.filter(h => h.tipo === "venta"),
@@ -39,7 +71,6 @@ export default function Houses({
     () => normalized.filter(h => h.tipo === "renta"),
     [normalized]
   );
-
   const filtered = useMemo(() => {
     if (filter === "all") return normalized;
     return normalized.filter(h => h.tipo === filter);
@@ -56,10 +87,7 @@ export default function Houses({
               {housesVenta.length > 0 && (
                 <div className="mb-6">
                   <h2 className="text-xl mb-3"
-                    style={{
-                      color: theme.text,
-                      fontFamily: theme.fontBody
-                    }}
+                    style={{ color: theme.text, fontFamily: theme.fontBody }}
                   >Propiedades en Venta</h2>
                   <div className="flex flex-wrap gap-3">
                     {housesVenta.map(h => (
@@ -67,7 +95,7 @@ export default function Houses({
                         key={h.id}
                         house={h}
                         isLoggedIn={isLoggedIn}
-                        onClick={() => setSelectedHouse(h)}
+                        onClick={() => openHouse(h)}
                         onEdit={(hh, e) => {
                           e.stopPropagation();
                           onEdit(hh);
@@ -81,10 +109,7 @@ export default function Houses({
               {housesRenta.length > 0 && (
                 <div className="mb-6">
                   <h2 className="text-xl mb-3"
-                    style={{
-                      color: theme.text,
-                      fontFamily: theme.fontBody
-                    }}
+                    style={{ color: theme.text, fontFamily: theme.fontBody }}
                   >Propiedades en Renta</h2>
                   <div className="flex flex-wrap gap-3">
                     {housesRenta.map(h => (
@@ -92,7 +117,7 @@ export default function Houses({
                         key={h.id}
                         house={h}
                         isLoggedIn={isLoggedIn}
-                        onClick={() => setSelectedHouse(h)}
+                        onClick={() => openHouse(h)}
                         onEdit={(hh, e) => {
                           e.stopPropagation();
                           onEdit(hh);
@@ -104,12 +129,9 @@ export default function Houses({
               )}
 
               {housesVenta.length === 0 && housesRenta.length === 0 && (
-                <p
-                style={{
-                      color: theme.text,
-                      fontFamily: theme.fontBody
-                    }}
-                >No hay propiedades para mostrar.</p>
+                <p style={{ color: theme.text, fontFamily: theme.fontBody }}>
+                  No hay propiedades para mostrar.
+                </p>
               )}
             </>
           ) : (
@@ -119,19 +141,18 @@ export default function Houses({
                   key={h.id}
                   house={h}
                   isLoggedIn={isLoggedIn}
-                  onClick={() => setSelectedHouse(h)}
+                  onClick={() => openHouse(h)}
                   onEdit={(hh, e) => {
                     e.stopPropagation();
                     onEdit(hh);
                   }}
                 />
               ))}
-              {filtered.length === 0 && <p
-              style={{
-                      color: theme.text,
-                      fontFamily: theme.fontBody
-                    }}
-              >No hay propiedades para mostrar.</p>}
+              {filtered.length === 0 && (
+                <p style={{ color: theme.text, fontFamily: theme.fontBody }}>
+                  No hay propiedades para mostrar.
+                </p>
+              )}
             </div>
           )}
         </div>
@@ -140,7 +161,7 @@ export default function Houses({
       {selectedHouse && (
         <HouseModal
           {...selectedHouse}
-          onClose={() => setSelectedHouse(null)}
+          onClose={closeHouse}
         />
       )}
     </>

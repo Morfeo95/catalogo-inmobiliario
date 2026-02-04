@@ -5,10 +5,13 @@ import {
   Warehouse,
   BadgeCheck,
   BadgeX,
-  SquarePen
+  SquarePen,
+  Share2
 } from 'lucide-react';
 import Button from '../ui/Button';
 import type { House } from '../../types/House';
+import toast from "react-hot-toast";
+
 
 interface HouseCardProps {
   house: House;
@@ -37,6 +40,30 @@ export default function HouseCard({
     imagenes,
     tipo
   } = house;
+
+  const handleShare = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const url = `${window.location.origin}/property/${house.id}`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: house.titulo,
+          text: `${house.titulo} - ${zona}`,
+          url
+        });
+        return;
+      } catch {
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      toast.success("Enlace copiado al portapapeles");
+    } catch {
+      prompt("Copia este enlace:", url);
+    }
+  };
 
   return (
     <article
@@ -96,15 +123,19 @@ export default function HouseCard({
         </div>
       </div>
 
-      {isLoggedIn && (
-        <div className="absolute top-1 right-1">
+       <div className="absolute top-1 right-1 flex gap-2">
+        <button onClick={handleShare} className="p-2 rounded bg-white/10">
+          <Share2 />
+        </button>
+
+        {isLoggedIn && (
           <Button onClick={(e) => onEdit?.(house, e)}>
             <div className="flex items-center gap-1">
               <SquarePen /> Editar
             </div>
           </Button>
-        </div>
-      )}
+        )}
+      </div>
     </article>
   );
 }
