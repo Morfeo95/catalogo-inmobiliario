@@ -47,7 +47,7 @@ export default function Houses({
 
   return (
     <>
-      <section id="propiedades" className="w-full mt-6">
+      <section id="propiedades" className="w-full mt-15">
         <div className="w-11/12 mx-auto">
           <FilterBar setFilter={setFilter} />
 
