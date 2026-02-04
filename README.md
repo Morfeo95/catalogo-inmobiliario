@@ -72,20 +72,20 @@ src/
 
 2. Instala dependencias:
 
-  ```
+  ```shell
   npm install
   
   ```
 3. Ejecuta el proyecto en desarrollo:
  
-  ```
+  ```shell
   npm run dev
 
   ```
 
  4. Abre en el navegador:
 
-  ```
+  ```shell
   http://localhost:5173
 
   ```
