@@ -18,7 +18,7 @@ export default function Carrucel({ imagenes }: CarrucelProps) {
     };
 
     return (
-        <div className="relative w-full h-full max-h-[80vh] aspect-4/3 overflow-hidden bg-black/10">
+        <div className="relative w-full h-full max-h-[90vh] aspect-4/3 overflow-hidden bg-black/10">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={indice}
