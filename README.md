@@ -4,6 +4,15 @@ Aplicación web para la gestión y visualización de propiedades inmobiliarias, 
 
 El proyecto permite crear, editar, eliminar y mostrar propiedades, incluyendo carga de imágenes, filtros básicos y una interfaz moderna y responsiva.
 
+## ☕ Apoya el proyecto
+
+Si este proyecto te ayudó a ahorrar tiempo, aprender algo nuevo o te sirvió como inspiración, puedes apoyar mi trabajo aquí:
+
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/franciscovera72624)
+
+Este proyecto está construido con un fuerte enfoque en la separación de responsabilidades, arquitectura limpia y una estructura amigable para desarrolladores, pensada para escalar y evolucionar con el tiempo.
+
+
 ## 🚀 Características principales
 
 - 📋 Listado de propiedades
